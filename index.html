@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <meta name="theme-color" content="#101827">
+  <title>Mondragos Sport | Datos para transferencia</title>
+  <meta name="description" content="Datos para transferencia de Mondragos Sport.">
+  <style>
+    :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#172033;background:#f4f6f9}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px}
+    main{width:min(100%,440px)}.brand{text-align:center;margin-bottom:26px}.brand small{display:block;letter-spacing:.24em;color:#69768a;font-weight:700;font-size:11px;margin-bottom:9px}.brand h1{font-size:30px;letter-spacing:.04em;margin:0;color:#101827}.brand p{margin:8px 0 0;color:#6b7585;font-size:14px}
+    .card{background:#fff;border-radius:22px;padding:30px 25px;box-shadow:0 15px 45px #192c4a12;border:1px solid #e8edf4}.label{font-size:12px;color:#6c788a;text-transform:uppercase;letter-spacing:.11em;font-weight:700}.bank{font-size:24px;font-weight:800;margin:9px 0 28px}.clabe{font-size:clamp(18px,5vw,24px);font-weight:750;letter-spacing:.035em;overflow-wrap:anywhere;margin:10px 0 24px;font-variant-numeric:tabular-nums}.copy{width:100%;border:0;border-radius:13px;background:#14263d;color:#fff;font-size:16px;font-weight:750;padding:17px;cursor:pointer;transition:background .2s}.copy:hover{background:#264668}.copy:focus-visible{outline:3px solid #76a9ff;outline-offset:3px}.status{text-align:center;min-height:24px;color:#187647;font-size:13px;margin:12px 0 0}footer{text-align:center;color:#738092;font-size:12px;line-height:1.5;margin:22px auto 0;max-width:320px}
+  </style>
+</head>
+<body>
+  <main>
+    <header class="brand"><small>INFORMACIÓN DE PAGO</small><h1>MONDRAGOS SPORT</h1><p>Datos para transferencia bancaria</p></header>
+    <section class="card" aria-label="Datos bancarios">
+      <div class="label">Banco</div><div class="bank">BanCoppel</div>
+      <div class="label">CLABE interbancaria</div><div class="clabe" id="clabe">137411105146688390</div>
+      <button class="copy" id="copy" type="button">Copiar CLABE</button>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </section>
+    <footer>Antes de transferir, verifica que los datos y el beneficiario que muestra tu banco sean correctos.</footer>
+  </main>
+  <script>
+    const clabe='137411105146688390';
+    const button=document.getElementById('copy');
+    const status=document.getElementById('status');
+    button.addEventListener('click',async()=>{
+      try{
+        if(navigator.clipboard && window.isSecureContext){await navigator.clipboard.writeText(clabe)}
+        else{const field=document.createElement('textarea');field.value=clabe;field.style.position='fixed';field.style.opacity='0';document.body.appendChild(field);field.select();const ok=document.execCommand('copy');field.remove();if(!ok)throw new Error('copy failed')}
+        status.textContent='✓ CLABE copiada correctamente';button.textContent='¡Copiada!';setTimeout(()=>button.textContent='Copiar CLABE',2200);
+      }catch(e){status.textContent='No se pudo copiar. Mantén presionada la CLABE para seleccionarla.'}
+    });
+  </script>
+</body>
+</html>
